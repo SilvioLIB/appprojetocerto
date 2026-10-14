@@ -1,0 +1,5 @@
+﻿faixa;grau_descarga;intervalo_ng;ng_de;ng_ate;n_municipios;percentual
+1;Baixo;[0, 8);0;8;1329;23,9
+2;Moderado;[8, 16);8;16;1966;35,3
+3;Alto;[16, 24);16;24;1988;35,7
+4;Muito alto;[24, 32];24;32;289;5,2

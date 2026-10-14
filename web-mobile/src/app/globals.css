@@ -1,0 +1,374 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --font-display: var(--font-archivo);
+  --color-esforco-lisa: var(--esforco-lisa);
+  --color-esforco-cava: var(--esforco-cava);
+  --color-poste-fill: var(--poste-fill);
+  --color-poste-stroke: var(--poste-stroke);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* ---------------------------------------------------------------------------
+   Direção visual: "Cobre & aço galvanizado" — os materiais reais da rede.
+   Neutros com tom de grafite-aço frio (o poste); acento cobre (o condutor)
+   no lugar do azul de SaaS. Cantos mais fechados = sensação de instrumento.
+   --------------------------------------------------------------------------- */
+:root {
+  --font-sans: var(--font-geist-sans);
+  /* Papel de prancheta: quase-branco com leve frio de aço. */
+  --background: oklch(0.986 0.003 240);
+  --foreground: oklch(0.26 0.018 250);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.26 0.018 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.26 0.018 250);
+  /* Cobre — o metal do condutor. Escurecido o suficiente p/ AA com texto branco. */
+  --primary: oklch(0.53 0.125 52);
+  --primary-foreground: oklch(0.99 0.01 60);
+  --secondary: oklch(0.955 0.005 240);
+  --secondary-foreground: oklch(0.3 0.018 250);
+  --muted: oklch(0.955 0.005 240);
+  --muted-foreground: oklch(0.5 0.018 250);
+  /* Hover/realce: leve calor de cobre em vez de cinza puro. */
+  --accent: oklch(0.955 0.018 58);
+  --accent-foreground: oklch(0.36 0.05 52);
+  --destructive: oklch(0.55 0.2 27);
+  --border: oklch(0.9 0.007 240);
+  --input: oklch(0.9 0.007 240);
+  --ring: oklch(0.53 0.125 52);
+  /* Charts: cobre → aço → cinzas, para leitura técnica coesa. */
+  --chart-1: oklch(0.6 0.13 52);
+  --chart-2: oklch(0.55 0.06 235);
+  --chart-3: oklch(0.62 0.02 240);
+  --chart-4: oklch(0.72 0.015 240);
+  --chart-5: oklch(0.82 0.01 240);
+  --radius: 0.4rem;
+  --sidebar: oklch(0.975 0.004 240);
+  --sidebar-foreground: oklch(0.26 0.018 250);
+  --sidebar-primary: oklch(0.53 0.125 52);
+  --sidebar-primary-foreground: oklch(0.99 0.01 60);
+  --sidebar-accent: oklch(0.955 0.018 58);
+  --sidebar-accent-foreground: oklch(0.36 0.05 52);
+  --sidebar-border: oklch(0.9 0.007 240);
+  --sidebar-ring: oklch(0.53 0.125 52);
+  /* Planta da rede — esforço por face do poste duplo T. Aço (= chart-2) quando
+     a face atende; âmbar deslocado para o amarelo (matiz 75) para não se
+     confundir com o cobre do condutor. */
+  --esforco-lisa: oklch(0.55 0.06 235);
+  --esforco-cava: oklch(0.62 0.14 75);
+  --poste-fill: oklch(0.88 0.01 240);
+  --poste-stroke: oklch(0.32 0.02 250);
+}
+
+/* Modo noturno — paleta ardósia-azulada suave (evita preto/branco puros e
+   o contraste agressivo). */
+.dark {
+  /* Grafite-aço profundo (evita preto puro). */
+  --background: oklch(0.2 0.014 250);
+  --foreground: oklch(0.92 0.01 240);
+  --card: oklch(0.24 0.016 250);
+  --card-foreground: oklch(0.92 0.01 240);
+  --popover: oklch(0.24 0.016 250);
+  --popover-foreground: oklch(0.92 0.01 240);
+  /* Cobre polido, mais luminoso sobre o escuro. */
+  --primary: oklch(0.72 0.13 58);
+  --primary-foreground: oklch(0.2 0.03 52);
+  --secondary: oklch(0.29 0.016 250);
+  --secondary-foreground: oklch(0.92 0.01 240);
+  --muted: oklch(0.28 0.015 250);
+  --muted-foreground: oklch(0.72 0.014 240);
+  --accent: oklch(0.33 0.035 55);
+  --accent-foreground: oklch(0.94 0.02 60);
+  --destructive: oklch(0.7 0.16 25);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.62 0.11 55);
+  --chart-1: oklch(0.72 0.13 58);
+  --chart-2: oklch(0.68 0.08 235);
+  --chart-3: oklch(0.7 0.02 240);
+  --chart-4: oklch(0.6 0.015 240);
+  --chart-5: oklch(0.5 0.012 240);
+  --sidebar: oklch(0.23 0.015 250);
+  --sidebar-foreground: oklch(0.92 0.01 240);
+  --sidebar-primary: oklch(0.72 0.13 58);
+  --sidebar-primary-foreground: oklch(0.2 0.03 52);
+  --sidebar-accent: oklch(0.33 0.035 55);
+  --sidebar-accent-foreground: oklch(0.94 0.02 60);
+  --sidebar-border: oklch(1 0 0 / 12%);
+  --sidebar-ring: oklch(0.62 0.11 55);
+  --esforco-lisa: oklch(0.68 0.06 235);
+  --esforco-cava: oklch(0.8 0.14 80);
+  --poste-fill: oklch(0.35 0.018 250);
+  --poste-stroke: oklch(0.9 0.008 240);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Ferramenta de cálculo: algarismos alinhados por padrão. */
+    font-feature-settings: "tnum" 1, "cv01" 1;
+  }
+  html {
+    @apply font-sans;
+  }
+  /* Títulos com leve aperto óptico, sem tocar nos componentes. */
+  h1,
+  h2 {
+    letter-spacing: -0.015em;
+  }
+}
+
+/* Impressão / exportação em PDF do memorial — sempre em tema claro,
+   mesmo com o modo noturno ativo. */
+@media print {
+  @page {
+    margin: 1.5cm;
+  }
+  :root,
+  .dark {
+    --background: #ffffff;
+    --foreground: #111111;
+    --card: #ffffff;
+    --card-foreground: #111111;
+    --popover: #ffffff;
+    --popover-foreground: #111111;
+    --muted: #f4f4f5;
+    --muted-foreground: #555555;
+    --border: #cccccc;
+    /* Planta em P&B: a leitura fica no traço (contínuo × tracejado). */
+    --esforco-lisa: #111111;
+    --esforco-cava: #111111;
+    --poste-fill: #e5e5e5;
+    --poste-stroke: #111111;
+  }
+  body {
+    background: #fff;
+    color: #111;
+  }
+  .print\:hidden {
+    display: none !important;
+  }
+  .break-inside-avoid {
+    break-inside: avoid;
+  }
+}
+/* Painel: barras de utilização crescem da base ao abrir. */
+@keyframes barra-crescer {
+  from {
+    transform: scaleY(0);
+  }
+}
+.barra-crescer {
+  animation: barra-crescer 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .barra-crescer {
+    animation: none;
+  }
+}
+
+/* Tela de entrada: pulso de corrente percorrendo a fase do meio. */
+@keyframes pulso-corrente {
+  from {
+    stroke-dashoffset: 240;
+  }
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+.pulso-corrente {
+  stroke-dasharray: 26 454;
+  animation: pulso-corrente 2.7s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulso-corrente {
+    display: none;
+  }
+}
+
+/* Medidor de utilização (base: Gauge do 21st, id 3719): o arco enche ao abrir
+   e acompanha o valor em transição. pathLength=100 → offset 100 = vazio. */
+@keyframes medidor-encher {
+  from {
+    stroke-dashoffset: 100;
+  }
+}
+.medidor-arco {
+  stroke-dasharray: 100 100;
+  transition:
+    stroke-dashoffset 0.9s cubic-bezier(0.2, 0.7, 0.2, 1),
+    stroke 0.3s ease;
+  animation: medidor-encher 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* Etapas do projeto (base: Animated Progress Stepper do 21st, id 28558). */
+@keyframes etapa-pulso {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.45);
+    opacity: 0;
+  }
+}
+.etapa-pulso {
+  animation: etapa-pulso 2.2s ease-in-out infinite;
+}
+@keyframes etapa-icone {
+  from {
+    transform: scale(0) rotate(-90deg);
+    opacity: 0;
+  }
+}
+.etapa-icone {
+  animation: etapa-icone 0.35s cubic-bezier(0.3, 1.4, 0.5, 1) both;
+}
+
+/* Cartões de escolha (estrutura do poste): o selo de seleção entra com mola. */
+@keyframes selo-entrar {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+}
+.selo-entrar {
+  animation: selo-entrar 0.25s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .medidor-arco,
+  .etapa-pulso,
+  .etapa-icone,
+  .selo-entrar {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Áreas seguras (entalhe, barra de status, barra de gestos). No navegador e no
+   WebView novo vêm de env(); no WebView antigo do APK o env() vem 0 e o
+   Capacitor (SystemBars insetsHandling "css") injeta --safe-area-inset-*.
+   O maior dos dois vale. No desktop tudo é 0 — nada muda. */
+:root {
+  --sa-top: max(env(safe-area-inset-top, 0px), var(--safe-area-inset-top, 0px));
+  --sa-right: max(env(safe-area-inset-right, 0px), var(--safe-area-inset-right, 0px));
+  --sa-bottom: max(env(safe-area-inset-bottom, 0px), var(--safe-area-inset-bottom, 0px));
+  --sa-left: max(env(safe-area-inset-left, 0px), var(--safe-area-inset-left, 0px));
+}
+body {
+  /* Celular em paisagem: o entalhe fica na lateral. */
+  padding-left: var(--sa-left);
+  padding-right: var(--sa-right);
+}
+
+/* Toque (celular e tablet): alvos de no mínimo 44 px, sem mudar o desktop.
+   min-height/min-width vencem o h-8/size-8 dos componentes sem disputar
+   especificidade com os utilitários do Tailwind. */
+@media (pointer: coarse) {
+  [data-slot="button"],
+  [data-slot="input"],
+  [data-slot="select-trigger"],
+  [data-slot="select-item"] {
+    min-height: 2.75rem;
+  }
+  /* Botões só de ícone (têm rótulo acessível) ficam quadrados. */
+  [data-slot="button"][aria-label] {
+    min-width: 2.75rem;
+  }
+  /* Alvo pequeno de propósito (nós da linha, lixeira): a área de toque cresce
+     por fora, o desenho não. */
+  .alvo-toque {
+    position: relative;
+  }
+  .alvo-toque::after {
+    content: "";
+    position: absolute;
+    inset: -0.625rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Versão mobile (smartphone/tablet). O dock inferior publica a própria altura
+   em --dock-h (components/dock.tsx); no desktop ele não existe e vale 0.
+   --------------------------------------------------------------------------- */
+:root {
+  --dock-h: 0px;
+}
+html {
+  /* Rolagem até âncoras/campos focados desconta o dock (o topo usa scroll-mt-*). */
+  scroll-padding-bottom: var(--dock-h);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+@media (pointer: coarse) {
+  html {
+    /* Sem o clarão cinza do toque no Android/iOS — os estados :active cuidam do retorno. */
+    -webkit-tap-highlight-color: transparent;
+  }
+  button,
+  a,
+  select,
+  [role="button"],
+  [role="radio"] {
+    /* Toque imediato, sem esperar o duplo toque de zoom. */
+    touch-action: manipulation;
+  }
+  /* O seletor nativo herda a altura de toque das demais entradas. */
+  select[data-slot="select-trigger"] {
+    min-height: 2.75rem;
+  }
+}
+/* Avisos (sonner) no celular ficam acima do dock quando aparecem embaixo. */
+[data-sonner-toaster][data-y-position="bottom"] {
+  bottom: calc(var(--dock-h) + 12px) !important;
+}

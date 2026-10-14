@@ -1,0 +1,26 @@
+TAREFA: REDESIGN VISUAL DO FRONTEND (executar direto ao ler este arquivo)
+==========================================================================
+
+Objetivo: reformular visualmente o frontend TypeScript em web/ (Next.js,
+tema claro/escuro) deste projeto — paleta, tipografia, espaçamento e
+componentes de UI — deixando a interface mais bonita e coesa SEM quebrar
+nenhuma funcionalidade.
+
+Como fazer:
+1. Invocar/usar a skill frontend-design (.claude/skills/frontend-design).
+2. Começar pelos tokens de tema em web/src/app/globals.css e mostrar um
+   screenshot antes de propagar.
+3. Depois aplicar em: site-header, categoria-view, formulario-calculo e
+   laudo-view, além dos primitivos em web/src/components/ui/.
+4. Verificar no preview (npm run dev em web/) a cada etapa, checar o console
+   por erros e mostrar screenshots da home, do formulário e do laudo.
+
+RESTRIÇÃO CRÍTICA — não quebrar as funcionalidades:
+- NÃO alterar nenhuma lógica de cálculo nem catálogos. Manter intactos:
+  web/src/lib/operacoes.ts, web/src/lib/validador.ts, web/src/lib/vento.ts,
+  web/src/lib/laudo-store.ts e o backend Flask (app.py, validador.py).
+- Preservar 100% das funcionalidades e os IDs/nomes de campos.
+- Mexer apenas em CSS/JSX de apresentação.
+
+Escopo: cenário B (redesign moderado). Para reduzir custo, é possível
+limitar apenas aos tokens de globals.css.

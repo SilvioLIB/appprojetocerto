@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validador de Cálculo Mecânico — GED-3648</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topo">
+    <div class="topo-conteudo">
+      <div>
+        <h1>Validador de Cálculo Mecânico</h1>
+        <p class="subtitulo">Projeto de Rede de Distribuição — GED-3648 (CPFL)</p>
+      </div>
+      <button id="btn-tema" class="btn-tema" title="Alternar tema" aria-label="Alternar tema">🌙</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <input id="busca" class="busca" type="search" placeholder="Buscar cálculo…" autocomplete="off">
+      <nav id="lista-operacoes" class="lista-operacoes" aria-label="Cálculos disponíveis"></nav>
+    </aside>
+
+    <main class="painel">
+      <section id="boas-vindas" class="cartao boas-vindas">
+        <h2>Selecione um cálculo</h2>
+        <p>Escolha uma opção na lista à esquerda. Os campos com valores já
+           cadastrados na norma aparecem como listas; os demais ficam como
+           campo aberto para você digitar.</p>
+      </section>
+
+      <section id="area-calculo" class="oculto">
+        <div class="cartao">
+          <h2 id="op-titulo"></h2>
+          <p id="op-descricao" class="descricao"></p>
+          <form id="form-calculo" class="form-calculo" novalidate></form>
+          <div class="acoes">
+            <button type="submit" form="form-calculo" class="btn-primario">Calcular</button>
+            <button type="button" id="btn-limpar" class="btn-secundario">Limpar</button>
+          </div>
+        </div>
+
+        <div id="erro" class="cartao erro oculto"></div>
+
+        <div id="cartao-resultados" class="cartao resultados oculto">
+          <h3>Resultados</h3>
+          <ul id="lista-resultados"></ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="rodape">
+    Ferramenta de apoio ao projeto — confira sempre com a norma GED-3648 vigente.
+  </footer>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

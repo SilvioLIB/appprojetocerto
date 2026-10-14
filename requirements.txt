@@ -1,0 +1,9 @@
+# --- pacote clima/ (descargas atmosfericas Ng + contorno climatico) ---
+# Ng por municipio (carregar_ng_estado) e contorno de estado precisam de:
+requests>=2.28
+numpy>=1.23
+scipy>=1.9
+matplotlib>=3.6
+shapely>=2.0
+# Obs.: o lookup simples de Ng (ng_municipio) e a classificacao em faixas
+# (grau_de_ng) funcionam so com a biblioteca padrao do Python.
